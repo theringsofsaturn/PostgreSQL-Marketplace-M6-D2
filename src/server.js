@@ -3,7 +3,7 @@ import cors from "cors"
 import listEndpoints from "express-list-endpoints";
 import productsRouter from "./services/products/index.js";
 import reviewsRouter from "./services/reviews/index.js";
-
+import createDefaultTables from "./db/create-tables.js"
 import {
   notFoundHandler,
   badRequestHandler,
@@ -33,6 +33,7 @@ console.table(listEndpoints(server));
 //server to listen on the port, it is stores into a variable
 server.listen(port, () => {
   console.log(`😎 Server is listening on port:  ${port} 😎`);
+  createDefaultTables()
 });
 
 server.on("error", console.log);
